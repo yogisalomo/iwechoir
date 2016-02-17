@@ -9,6 +9,7 @@ class Admin::MembersController < ApplicationController
 	def create
 		@member = Member.new(member_params)
 		@member.save
+
 		redirect_to action: :index
 	end
 

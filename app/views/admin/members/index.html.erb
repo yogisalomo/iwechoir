@@ -12,7 +12,7 @@
 	<th>Action</th>
 	<% @members.each do |member| %>
 		<tr>
-			<td><%= member.image%></td>
+			<td><%= image_tag member.image_url(:thumb) if member.image? %></td>
 			<td><%= member.name%></td>
 			<td><%= member.email%></td>
 			<td><%= member.phone%></td>
