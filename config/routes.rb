@@ -56,5 +56,7 @@ Rails.application.routes.draw do
        resources :videos
        resources :albums
        resources :photos
+       resources :meeting_results
+       resources :worship_songs
      end
 end

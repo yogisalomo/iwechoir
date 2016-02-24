@@ -1,30 +1,60 @@
-<h1>All Members</h1>
+<% content_for :content do %>
+<div class="row">
+	<h1>All Members</h1>
+</div>
 
-<table>
-	<th>Image</th>
-	<th>Name</th>
-	<th>Email</th>
-	<th>Phone</th>
-	<th>Birthday</th>
-	<th>Role</th>
-	<th>Active From</th>
-	<th>Active Until</th>
-	<th>Action</th>
-	<% @members.each do |member| %>
-		<tr>
-			<td><%= image_tag member.image_url(:thumb) if member.image? %></td>
-			<td><%= member.name%></td>
-			<td><%= member.email%></td>
-			<td><%= member.phone%></td>
-			<td><%= member.birthday%></td>
-			<td><%= member.role%></td>
-			<td><%= member.active_start%></td>
-			<td><%= member.active_end%></td>
-			<td>
-				<%= link_to 'Edit', edit_admin_member_path(member) %>
-				<%= link_to 'Delete', admin_member_path(member),
-				method: :delete %>
-			</td>
-		</tr>
-	<% end %>
-</table>
+<div class="row">
+	<div class="col-lg-12">
+	    <div class="panel panel-default">
+	        <div class="panel-heading">
+	            <%= link_to "Add New", new_admin_member_path,  class: "btn btn-default" %>
+	        </div>
+	        <!-- /.panel-heading -->
+	        <div class="panel-body">
+	            <div class="table-responsive">
+	                <table class="table">
+	                    <thead>
+	                        <tr>
+	                            <th>#</th>
+	                            <th>Image</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Phone</th>
+								<th>Birthday</th>
+								<th>Role</th>
+								<th>Active From</th>
+								<th>Active Until</th>
+								<th>Action</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                        <% @members.each do |member| %>
+								<tr>
+									<td><%= member.id%></td>
+									<td><%= image_tag member.image_url(:thumb) if member.image? %></td>
+									<td><%= member.name%></td>
+									<td><%= member.email%></td>
+									<td><%= member.phone%></td>
+									<td><%= member.birthday%></td>
+									<td><%= member.role%></td>
+									<td><%= member.active_start%></td>
+									<td><%= member.active_end%></td>
+									<td>
+										<%= link_to 'Edit', edit_admin_member_path(member) %>
+										<%= link_to 'Delete', admin_member_path(member),
+										method: :delete %>
+									</td>
+								</tr>
+							<% end %>
+	                    </tbody>
+	                </table>
+	            </div>
+	            <!-- /.table-responsive -->
+	        </div>
+	        <!-- /.panel-body -->
+	    </div>
+	    <!-- /.panel -->
+	</div>
+</div>
+
+<% end %>

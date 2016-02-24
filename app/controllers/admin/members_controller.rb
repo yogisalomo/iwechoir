@@ -1,4 +1,5 @@
 class Admin::MembersController < ApplicationController
+	layout "admin"
 	def index
 		@members = Member.all
 	end
