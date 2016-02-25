@@ -1,0 +1,52 @@
+<% content_for :content do %>
+<div class="row">
+	<h1>All Meeting Results</h1>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+	    <div class="panel panel-default">
+	        <div class="panel-heading">
+	            <%= link_to "Add New", new_admin_meeting_result_path,  class: "btn btn-default" %>
+	        </div>
+	        <!-- /.panel-heading -->
+	        <div class="panel-body">
+	            <div class="table-responsive">
+	                <table class="table">
+	                    <thead>
+	                        <tr>
+	                            <th>#</th>
+	                            <th>Date</th>
+								<th>Location</th>
+								<th>Summary</th>
+								<th>Created By</th>
+								<th>Action</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                        <% @meeting_results.each do |meeting_result| %>
+								<tr>
+									<td><%= meeting_result.id%></td>
+									<td><%= meeting_result.date%></td>
+									<td><%= meeting_result.location%></td>
+									<td><%= meeting_result.summary%></td>
+									<td><%= meeting_result.user_id%></td>
+									<td>
+										<%= link_to 'Edit', edit_admin_meeting_result_path(meeting_result) %>
+										<%= link_to 'Delete', admin_meeting_result_path(meeting_result),
+										method: :delete %>
+									</td>
+								</tr>
+							<% end %>
+	                    </tbody>
+	                </table>
+	            </div>
+	            <!-- /.table-responsive -->
+	        </div>
+	        <!-- /.panel-body -->
+	    </div>
+	    <!-- /.panel -->
+	</div>
+</div>
+
+<% end %>

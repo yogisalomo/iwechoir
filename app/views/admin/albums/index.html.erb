@@ -1,0 +1,50 @@
+<% content_for :content do %>
+<div class="row">
+	<h1>All Albums</h1>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+	    <div class="panel panel-default">
+	        <div class="panel-heading">
+	            <%= link_to "Add New", new_admin_album_path,  class: "btn btn-default" %>
+	        </div>
+	        <!-- /.panel-heading -->
+	        <div class="panel-body">
+	            <div class="table-responsive">
+	                <table class="table">
+	                    <thead>
+	                        <tr>
+	                            <th>#</th>
+	                            <th>Name</th>
+								<th>Description</th>
+								<th>Created By</th>
+								<th>Action</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                        <% @albums.each do |album| %>
+								<tr>
+									<td><%= album.id%></td>
+									<td><%= album.name%></td>
+									<td><%= album.description%></td>
+									<td><%= album.user_id%></td>
+									<td>
+										<%= link_to 'Edit', edit_admin_album_path(album) %>
+										<%= link_to 'Delete', admin_album_path(album),
+										method: :delete %>
+									</td>
+								</tr>
+							<% end %>
+	                    </tbody>
+	                </table>
+	            </div>
+	            <!-- /.table-responsive -->
+	        </div>
+	        <!-- /.panel-body -->
+	    </div>
+	    <!-- /.panel -->
+	</div>
+</div>
+
+<% end %>

@@ -41,8 +41,8 @@
 									<td><%= member.active_end%></td>
 									<td>
 										<%= link_to 'Edit', edit_admin_member_path(member) %>
-										<%= link_to 'Delete', admin_member_path(member),
-										method: :delete %>
+										
+										<%= link_to "Delete", controller: "admin/members", action: "destroy", id: member.id	 %>
 									</td>
 								</tr>
 							<% end %>

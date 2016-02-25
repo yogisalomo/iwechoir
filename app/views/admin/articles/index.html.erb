@@ -1,0 +1,52 @@
+<% content_for :content do %>
+<div class="row">
+	<h1>All Articles</h1>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+	    <div class="panel panel-default">
+	        <div class="panel-heading">
+	            <%= link_to "Add New", new_admin_article_path,  class: "btn btn-default" %>
+	        </div>
+	        <!-- /.panel-heading -->
+	        <div class="panel-body">
+	            <div class="table-responsive">
+	                <table class="table">
+	                    <thead>
+	                        <tr>
+	                            <th>#</th>
+	                            <th>Image</th>
+								<th>Title</th>
+								<th>Content</th>
+								<th>Created By</th>
+								<th>Action</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                        <% @articles.each do |article| %>
+								<tr>
+									<td><%= article.id%></td>
+									<td><%= image_tag article.image_url(:thumb) if article.image? %></td>
+									<td><%= article.title%></td>
+									<td><%= article.content%></td>
+									<td><%= article.user_id%></td>
+									<td>
+										<%= link_to 'Edit', edit_admin_article_path(article) %>
+										<%= link_to 'Delete', admin_article_path(article),
+										method: :delete %>
+									</td>
+								</tr>
+							<% end %>
+	                    </tbody>
+	                </table>
+	            </div>
+	            <!-- /.table-responsive -->
+	        </div>
+	        <!-- /.panel-body -->
+	    </div>
+	    <!-- /.panel -->
+	</div>
+</div>
+
+<% end %>
